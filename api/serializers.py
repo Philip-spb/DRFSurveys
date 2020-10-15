@@ -6,7 +6,7 @@ from .models import *
 class ChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Choice
-        fields = ('id', 'choice')
+        fields = ('id', 'choice', 'questions')
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -71,7 +71,7 @@ class TestBaseSerializer(serializers.Serializer):
 
 
 class SingleTestBaseSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    user = serializers.CharField(max_length=120)
-    survey = FullSurveySerializer(read_only=True)
+    # id = serializers.IntegerField()
+    # user = serializers.CharField(max_length=120)
+    # survey = FullSurveySerializer(read_only=True)
     answers = AnswerSerializer(read_only=True, many=True)

@@ -53,7 +53,7 @@ class AnswerViewSet(viewsets.ModelViewSet):
     serializer_class = AnswerSerializer
 
 
-# Вывод всех тестов
+# Вывод всех тестов и создание нового
 class TestBaseView(APIView):
 
     def get(self, request):
@@ -80,7 +80,7 @@ class TestBaseView(APIView):
                 ans.save()
                 del ans
 
-        return Response({"id созданного опроса": test_base_saved.id})
+        return Response({"test_base": test_base_saved.id})
 
 
 # Вывод одного проводимого теста с отвеченными вопросами
