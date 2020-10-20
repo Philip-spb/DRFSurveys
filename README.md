@@ -2,19 +2,24 @@
 
 ### Инструкция по разворачиванию приложения на локальном компьютере
 
-Для установки данной системы вам необходимо:
+Для установки данного приложения вам необходимо запустить bash-скрипт
+
+```sh
+.install
+```
+
+или выполнить установку в ручную:
 
 -   Установить в вашем окружении **Django 2.2.10** и **Django REST framework**: 
- ```
-pip3 install django
-pip3 install djangorestframework
-``` 
+```
+pip install -r requirements.txt
+```
 
 - Далее необходимо выполнить миграции и создать пользователя с правами администратора и запустить сервер:
 
 ```
 python3 manage.py makemigrations
-python3 manage.py makemigrations
+python3 manage.py migrate
 python3 manage.py createsuperuser
 python3 manage.py runserver
 ```
