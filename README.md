@@ -1,27 +1,14 @@
 # API для системы опросов пользователей
 
-### Инструкция по разворачиванию приложения на локальном компьютере
+### Инструкция по разворачиванию приложения в контейнере docker
 
-Для установки данного приложения вам необходимо запустить bash-скрипт
-
+1. Создаем образ `docker build -t drfsurveys .`
+2. Запускаяем контейнер `docker run --rm -p 8000:8000 drfsurveys python manage.py runserver 0.0.0.0:8000`
+3. Узнаем ID запущенного контейнера и выполняем следующие команды:
 ```sh
-.install
-```
-
-или выполнить установку в ручную:
-
--   Установить в вашем окружении **Django 2.2.10** и **Django REST framework**: 
-```
-pip install -r requirements.txt
-```
-
-- Далее необходимо выполнить миграции и создать пользователя с правами администратора и запустить сервер:
-
-```
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py createsuperuser
-python3 manage.py runserver
+docker exec -it 0a5188792093 python manage.py makemigrations api
+docker exec -it 0a5188792093 python manage.py migrate
+docker exec -it 0a5188792093 python manage.py createsupeuser
 ```
 
 В текущем состоянии наше приложение работает с БД SQLite, но можно подключить любую другую БД поддерживаемую Django при необходимости
